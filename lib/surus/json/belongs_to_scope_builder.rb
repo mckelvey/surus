@@ -13,12 +13,12 @@ module Surus
         connection.quote_table_name association.join_table
       end
 
-      def association_foreign_key
-        connection.quote_column_name association.association_foreign_key
-      end
-
       def foreign_key
         connection.quote_column_name association.foreign_key
+      end
+
+      def association_primary_key
+        connection.quote_column_name association.association_primary_key
       end
 
     end
