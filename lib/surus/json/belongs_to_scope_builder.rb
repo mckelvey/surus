@@ -10,7 +10,7 @@ module Surus
       end
 
       def primary_table
-        outside_class.quoted_table_name
+        connection.quote_table_name association.klass.table_name
       end
 
       def primary_key
@@ -18,7 +18,7 @@ module Surus
       end
 
       def association_table
-        connection.quote_table_name association.klass.table_name
+        outside_class.quoted_table_name
       end
 
       def association_foreign_key
