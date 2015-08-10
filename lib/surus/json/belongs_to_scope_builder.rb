@@ -2,6 +2,11 @@ module Surus
   module JSON
     class BelongsToScopeBuilder < AssociationScopeBuilder
       def scope
+        logger.info "bonnection"
+        logger.info connection.inspect
+        logger.info "association"
+        logger.info association.inspect
+        
         s = association
           .klass
           .joins("JOIN #{join_table} ON #{join_table}.#{association_foreign_key}=#{association_table}.#{association_primary_key}")
