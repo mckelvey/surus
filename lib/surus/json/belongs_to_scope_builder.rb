@@ -2,6 +2,7 @@ module Surus
   module JSON
     class BelongsToScopeBuilder < AssociationScopeBuilder
       def scope
+        logger = Rails.logger
         logger.info "bonnection"
         logger.info connection.inspect
         logger.info "association"
