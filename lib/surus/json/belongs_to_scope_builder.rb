@@ -3,15 +3,12 @@ module Surus
     class BelongsToScopeBuilder < AssociationScopeBuilder
       def scope
         logger = Rails.logger
-        logger.info "bonnection"
-        logger.info connection.inspect
-        logger.info "association"
-        logger.info association.inspect
+        logger.info "association table"
+        logger.info association_table
         
         s = association
           .klass
-          .joins("JOIN #{join_table} ON #{join_table}.#{association_foreign_key}=#{association_table}.#{association_primary_key}")
-          .where("#{outside_class.quoted_table_name}.#{association_primary_key}=#{join_table}.#{foreign_key}")
+          .where("#{quote_column_name association.active_record_primary_key}=#{quote_column_name association.foreign_key}")
         s = s.instance_eval(&association.scope) if association.scope
         s
       end
