@@ -4,7 +4,7 @@ module Surus
       def scope
         logger = Rails.logger
         logger.info "current table"
-        logger.info join_table
+        logger.info outside_class.quoted_table_name
         
         s = association
           .klass
