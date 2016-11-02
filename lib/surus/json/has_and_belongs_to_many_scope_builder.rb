@@ -5,7 +5,7 @@ module Surus
         s = association
           .klass
           .joins("JOIN #{join_table} ON #{join_table}.#{association_foreign_key}=#{association_table}.#{association_primary_key}")
-          .where("#{outside_class.quoted_table_name}.#{association_primary_key}=#{join_table}.#{foreign_key}")
+          .where("#{outside_class.quoted_table_name}.#{association_primary_key}=#{join_table}.#{association_foreign_key}")
         s = s.instance_eval(&association.scope) if association.scope
         s
       end
